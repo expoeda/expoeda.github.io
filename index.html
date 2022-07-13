@@ -7,17 +7,29 @@
     <script src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/dist/mindar-image-aframe.prod.js"></script>
     <script type="text/javascript">
         var count1 = 1;
+        var count2 = 1;
 
         document.addEventListener("DOMContentLoaded", function() {
             const vid1 = document.querySelector('#vid1');
             const vid2 = document.querySelector('#vid2');
             const vid3 = document.querySelector('#vid3');
+            const vid4 = document.querySelector('#vid4');
+            const vid5 = document.querySelector('#vid5');
+            const vid6 = document.querySelector('#vid6');
             setInterval(function () {
                 count1 += 1;
                 if (count1 == 64) count1 = 1; 
                 vid1.setAttribute("src","./video1/im ("+count1+").jpg");
                 vid2.setAttribute("src","./video1/im ("+count1+").jpg");
-                vid3.setAttribute("src","./video1/im ("+count1+").jpg");
+                vid4.setAttribute("src","./video1/im ("+count1+").jpg");
+                vid5.setAttribute("src","./video1/im ("+count1+").jpg");
+                vid6.setAttribute("src","./video1/im ("+count1+").jpg");
+            },66); //modifique esse valor de 66 milissegundos para aumentar ou diminuir a velocidade do vídeo
+
+            setInterval(function () {
+                count2 += 1;
+                if (count2 == 70) count2 = 1; 
+                vid3.setAttribute("src","./video2/im ("+count2+").jpg");
             },66); //modifique esse valor de 66 milissegundos para aumentar ou diminuir a velocidade do vídeo
         });
     </script>
@@ -37,7 +49,7 @@
          <a-image id="vid2" src="./video1/im (1).jpg" opacity="1.0" position="0 0 0" height="2.3" width="2.3" rotation="0 0 0"></a-plane>
     </a-entity>
     <a-entity mindar-image-target="targetIndex: 2">
-         <a-image id="vid3" src="./video1/im (1).jpg" opacity="1.0" position="0 0 0" height="1.5" width="1.5" rotation="0 0 0"></a-plane>
+         <a-image id="vid3" src="./video2/im (1).jpg" opacity="1.0" position="0 0 0" height="1.5" width="1.5" rotation="0 0 0"></a-plane>
     </a-entity>
     <a-entity mindar-image-target="targetIndex: 3">
          <a-image id="vid4" src="./video1/im (1).jpg" opacity="1.0" position="0 0 0" height="1.5" width="1.5" rotation="0 0 0"></a-plane>
