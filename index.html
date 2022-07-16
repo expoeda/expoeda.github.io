@@ -29,7 +29,7 @@
                 target.addEventListener("targetFound", event => {
                     const trgt = parseInt(event.target.id.charAt(6));
                     var folder = "./video1/";
-                    var maxCount = 64;//animações têm 64 quadros
+                    var maxCount = 64;//animações têm 64 quadros, aranha-colunas
                     if(trgt == 3) {
                         folder = "./video2/";
                         maxCount = 75;//animação dos coelhos
@@ -47,12 +47,12 @@
                     
                     if(trgt == 2) {
                         folder = "./video5/";
-                        maxCount = 255;//animação do dinossauro 
+                        maxCount = 255;//animação do boneco instrutivo
                     }
                     
                     if(trgt == 6) {
                         folder = "./video6/";
-                        maxCount = 25;//animação do dinossauro 
+                        maxCount = 25;//animação do porco 
                     }
                     
                     interval = setInterval(function () {
@@ -87,7 +87,7 @@
          <a-image id="vid3" src="./video2/im (1).jpg" opacity="1.0" position="0 0 0" height="1.5" width="1.5" rotation="0 0 0"></a-plane>
     </a-entity>
     <a-entity id="target4" mindar-image-target="targetIndex: 3">
-         <a-image id="vid4" src="./video4/im (1).jpg" opacity="1.0" position="0 0 0" height="1.5" width="1.5" rotation="0 0 0"></a-plane>
+         <a-image id="vid4" src="./video4/im (1).jpg" opacity="1.0" position="0 0 0" height="1.2" width="1.2" rotation="0 0 0"></a-plane>
     </a-entity>
     <a-entity id="target5" mindar-image-target="targetIndex: 4">
          <a-image id="vid5" src="./video3/im (1).jpg" opacity="1.0" position="0 0 0" height="1.5" width="1.5" rotation="0 0 0"></a-plane>
