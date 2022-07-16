@@ -50,6 +50,11 @@
                         maxCount = 255;//animação do dinossauro 
                     }
                     
+                    if(trgt == 6) {
+                        folder = "./video6/";
+                        maxCount = 25;//animação do dinossauro 
+                    }
+                    
                     interval = setInterval(function () {
                         count += 1;
                         if (count == maxCount) count = 1; 
@@ -88,7 +93,7 @@
          <a-image id="vid5" src="./video3/im (1).jpg" opacity="1.0" position="0 0 0" height="1.5" width="1.5" rotation="0 0 0"></a-plane>
     </a-entity>
     <a-entity id="target6" mindar-image-target="targetIndex: 5">
-         <a-image id="vid6" src="./video1/im (1).jpg" opacity="1.0" position="0 0 0" height="1.5" width="1.5" rotation="0 0 0"></a-plane>
+         <a-image id="vid6" src="./video6/im (1).jpg" opacity="1.0" position="0 0 0" height="1.5" width="1.5" rotation="0 0 0"></a-plane>
     </a-entity>
     </a-scene>
 </body>
