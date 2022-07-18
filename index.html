@@ -9,7 +9,21 @@
         var count = 1;
         var interval;
 
+        //quantidade de imagens em cada pasta de animação, na ordem
+        var quant = [64,255,75,19,27,25]
+
         document.addEventListener("DOMContentLoaded", function() {
+
+            //carrega todas as imagens primeiro
+            const hiddenImg = document.querySelector('#hiddenImg');
+            var imgs = "";
+            for(q = 1;q<=quant.length;q++){
+                for(i=1;i<=quant[q-1];i++){
+                    imgs += "<img id='video"+q+"_"+i+"' src='./video"+q+"/im ("+i+").jpg' >";
+                }
+            }
+            hiddenImg.innerHTML = imgs;
+
             const targets = [document.querySelector('#target1'),
                              document.querySelector('#target2'),
                              document.querySelector('#target3'),
@@ -25,44 +39,19 @@
                           document.querySelector('#vid6')];
 
             // detect target found
-            for (target of targets) {
-                target.addEventListener("targetFound", event => {
+            for (i=1;i<=6;i++) {
+                targets[i-1].addEventListener("targetFound", event => {
                     const trgt = parseInt(event.target.id.charAt(6));
-                    var folder = "./video1/";
-                    var maxCount = 64;//animações têm 64 quadros, aranha-colunas
-                    if(trgt == 3) {
-                        folder = "./video2/";
-                        maxCount = 75;//animação dos coelhos
-                    }
-                    
-                    if(trgt == 5) {
-                        folder = "./video3/";
-                        maxCount = 27;//animação dos patos  
-                    }
-                    
-                    if(trgt == 4) {
-                        folder = "./video4/";
-                        maxCount = 19;//animação do dinossauro 
-                    }
-                    
-                    if(trgt == 2) {
-                        folder = "./video5/";
-                        maxCount = 255;//animação do boneco instrutivo
-                    }
-                    
-                    if(trgt == 6) {
-                        folder = "./video6/";
-                        maxCount = 25;//animação do porco 
-                    }
+                    maxCount = quant[trgt-1]
                     
                     interval = setInterval(function () {
                         count += 1;
                         if (count == maxCount) count = 1; 
-                        vids[trgt-1].setAttribute("src",folder+"im ("+count+").jpg");
+                        vids[trgt-1].setAttribute("src","#video"+trgt+"_"+count);
                     },66); //modifique esse valor de 66 milissegundos para aumentar ou diminuir a velocidade do vídeo
                 });
 
-                target.addEventListener("targetLost", event => {
+                targets[i-1].addEventListener("targetLost", event => {
                     clearInterval(interval);
                 });
             }
@@ -71,9 +60,8 @@
 </head>
 <body>
     <a-scene mindar-image="filterMinCF:0.0; filterBeta: 10000; imageTargetSrc: targets.mind"; color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
-    <a-assets>
-        <img id="card" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/examples/image-tracking/assets/card-example/card.png"/>
-        <a-asset-item id="avatarModel" src="https://cdn.jsdelivr.net/gh/hiukim/mind-ar-js@1.1.4/examples/image-tracking/assets/card-example/softmind/scene.gltf"></a-asset-item>
+    <a-assets id="hiddenImg">
+        
     </a-assets>
 
     <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
@@ -81,16 +69,16 @@
          <a-image id="vid1" src="./video1/im (1).jpg" opacity="1.0" position="0 0 0" height="1.5" width="1.5" rotation="0 0 0"></a-plane>
     </a-entity>
     <a-entity id="target2" mindar-image-target="targetIndex: 1">
-         <a-image id="vid2" src="./video5/im (1).jpg" opacity="1.0" position="0 0 0" height="2.3" width="2.3" rotation="0 0 0"></a-plane>
+         <a-image id="vid2" src="./video2/im (1).jpg" opacity="1.0" position="0 0 0" height="2.3" width="2.3" rotation="0 0 0"></a-plane>
     </a-entity>
     <a-entity id="target3" mindar-image-target="targetIndex: 2">
-         <a-image id="vid3" src="./video2/im (1).jpg" opacity="1.0" position="0 0 0" height="1.5" width="1.5" rotation="0 0 0"></a-plane>
+         <a-image id="vid3" src="./video3/im (1).jpg" opacity="1.0" position="0 0 0" height="1.5" width="1.5" rotation="0 0 0"></a-plane>
     </a-entity>
     <a-entity id="target4" mindar-image-target="targetIndex: 3">
          <a-image id="vid4" src="./video4/im (1).jpg" opacity="1.0" position="0 0 0" height="1.2" width="1.2" rotation="0 0 0"></a-plane>
     </a-entity>
     <a-entity id="target5" mindar-image-target="targetIndex: 4">
-         <a-image id="vid5" src="./video3/im (1).jpg" opacity="1.0" position="0 0 0" height="1.5" width="1.5" rotation="0 0 0"></a-plane>
+         <a-image id="vid5" src="./video5/im (1).jpg" opacity="1.0" position="0 0 0" height="1.5" width="1.5" rotation="0 0 0"></a-plane>
     </a-entity>
     <a-entity id="target6" mindar-image-target="targetIndex: 5">
          <a-image id="vid6" src="./video6/im (1).jpg" opacity="1.0" position="0 0 0" height="1.5" width="1.5" rotation="0 0 0"></a-plane>
